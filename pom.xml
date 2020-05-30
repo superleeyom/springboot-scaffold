@@ -20,7 +20,7 @@
         <mybatis-plus>3.3.2</mybatis-plus>
         <!-- 工具类 -->
         <hutool-all>5.3.5</hutool-all>
-        <javamelody-core.version>1.69.0</javamelody-core.version>
+        <javamelody-core.version>1.74.0</javamelody-core.version>
     </properties>
 
     <dependencies>
