@@ -1,0 +1,17 @@
+# *****************************开发环境*****************************
+
+# 数据库
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/scaffold?zeroDateTimeBehavior=convertToNull&useAffectedRows=true&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+
+# 日志级别
+logging:
+  level:
+    com:
+      leeyom:
+        scaffold:
+          mapper: debug

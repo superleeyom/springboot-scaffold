@@ -16,11 +16,9 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <!-- 数据库 -->
         <mybatis-plus>3.3.2</mybatis-plus>
-        <!-- 工具类 -->
         <hutool-all>5.3.5</hutool-all>
-        <javamelody-core.version>1.74.0</javamelody-core.version>
+        <javamelody.version>1.83.0</javamelody.version>
     </properties>
 
     <dependencies>
@@ -33,12 +31,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- lombok -->
         <dependency>
@@ -65,8 +57,8 @@
         <!--monitor-->
         <dependency>
             <groupId>net.bull.javamelody</groupId>
-            <artifactId>javamelody-core</artifactId>
-            <version>${javamelody-core.version}</version>
+            <artifactId>javamelody-spring-boot-starter</artifactId>
+            <version>${javamelody.version}</version>
         </dependency>
     </dependencies>
 

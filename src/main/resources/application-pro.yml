@@ -1,0 +1,9 @@
+# *****************************生产环境*****************************
+
+# 数据库
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://生产环境ip:3306/scaffold?zeroDateTimeBehavior=convertToNull&useAffectedRows=true&serverTimezone=Asia/Shanghai&useUnicode=true&useSSL=false&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: root
