@@ -3,7 +3,7 @@ package com.leeyom.scaffold.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.leeyom.scaffold.common.dto.ResultDTO;
+import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.domain.entity.User;
 
 /**
@@ -21,5 +21,5 @@ public interface UserService extends IService<User> {
      * @param user 查询实体
      * @return 所有数据
      */
-    ResultDTO<IPage<User>> selectAll(Page<User> page, User user);
+    ApiResponse<IPage<User>> selectAll(Page<User> page, User user);
 }

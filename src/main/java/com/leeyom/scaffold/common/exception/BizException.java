@@ -1,44 +1,31 @@
 package com.leeyom.scaffold.common.exception;
 
-
-import com.leeyom.scaffold.common.enums.ApiBaseEnum;
+import com.leeyom.scaffold.common.enums.Status;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 通用业务异常
  *
  * @author leeyom
  */
-public class BizException extends RuntimeException {
-
-    private static final long serialVersionUID = -653112170620824445L;
-
-    private String customMsg;
-
-
-    private ApiBaseEnum apiBaseEnum;
-
-    public BizException(String customMsg) {
-        super(customMsg);
-        this.customMsg = customMsg;
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class BizException extends BaseException {
+    public BizException(Status status) {
+        super(status);
     }
 
-    public BizException(ApiBaseEnum apiBaseEnum, String customMsg) {
-        super(customMsg);
-        this.customMsg = customMsg;
-        this.apiBaseEnum = apiBaseEnum;
+    public BizException(Status status, Object data) {
+        super(status, data);
     }
 
-    public BizException(ApiBaseEnum apiBaseEnum) {
-        super(apiBaseEnum.getMsg());
-        this.apiBaseEnum = apiBaseEnum;
+    public BizException(Integer code, String message) {
+        super(code, message);
     }
 
-    public ApiBaseEnum getApiEnum() {
-        return this.apiBaseEnum;
+    public BizException(Integer code, String message, Object data) {
+        super(code, message, data);
     }
 
-
-    public String getCustomMsg() {
-        return customMsg;
-    }
 }

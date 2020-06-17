@@ -9,8 +9,29 @@
 - `hutool-all 5.3.5`：小而全的 Java 工具类库
 - `javamelody-spring-boot-starter`：监控器，打印 http 请求 url，响应时间
 - `lombok`：Java 实用工具，必备插件
+- `validator`：参数校验相关的注解
 
 ## 如何使用
+
+准备 sql：
+
+```sql
+DROP TABLE IF EXISTS user;
+CREATE TABLE user
+(
+	id BIGINT(20) NOT NULL COMMENT '主键ID',
+	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
+	age INT(11) NULL DEFAULT NULL COMMENT '年龄',
+	email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
+	PRIMARY KEY (id)
+);
+INSERT INTO user (id, name, age, email) VALUES
+(1, 'Jone', 18, 'test1@baomidou.com'),
+(2, 'Jack', 20, 'test2@baomidou.com'),
+(3, 'Tom', 28, 'test3@baomidou.com'),
+(4, 'Sandy', 21, 'test4@baomidou.com'),
+(5, 'Billie', 24, 'test5@baomidou.com');
+```
 
 套用此脚手架，需要修改几个地方，有些地方我用占位符 `${xxx}` 代替：
 
@@ -78,4 +99,4 @@ public class MybatisPlusConfig {
 
 将`com.leeyom.scaffold.mapper`替换成你自己的 mapper 目录。
 
-
+最后访问：[http://127.0.0.1:9380/scaffold/user/selectAll](http://127.0.0.1:9380/scaffold/user/selectAll) 测试下

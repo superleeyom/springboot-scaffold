@@ -4,7 +4,7 @@ package com.leeyom.scaffold.api;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.leeyom.scaffold.common.dto.ResultDTO;
+import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.domain.entity.User;
 import com.leeyom.scaffold.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class UserController extends ApiController {
      * @return 所有数据
      */
     @GetMapping("selectAll")
-    public ResultDTO<IPage<User>> selectAll(Page<User> page, User user) {
+    public ApiResponse<IPage<User>> selectAll(Page<User> page, User user) {
         return userService.selectAll(page, user);
     }
 }

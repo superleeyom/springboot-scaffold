@@ -29,10 +29,10 @@
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>logs/${LOG_HOME}/info.created_on_%d{yyyy-MM-dd}.part_%i.log
+            <FileNamePattern>${user.home}/logs/${LOG_HOME}/info.created_on_%d{yyyy-MM-dd}.part_%i.log
             </FileNamePattern>
-            <!--只保留最近90天的日志-->
-            <maxHistory>90</maxHistory>
+            <!--只保留最近30天的日志-->
+            <maxHistory>30</maxHistory>
             <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
             <!--<totalSizeCap>1GB</totalSizeCap>-->
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -56,10 +56,10 @@
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>logs/${LOG_HOME}/error.created_on_%d{yyyy-MM-dd}.part_%i.log
+            <FileNamePattern>${user.home}/logs/${LOG_HOME}/error.created_on_%d{yyyy-MM-dd}.part_%i.log
             </FileNamePattern>
-            <!--只保留最近90天的日志-->
-            <maxHistory>90</maxHistory>
+            <!--只保留最近30天的日志-->
+            <maxHistory>30</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- maxFileSize:这是活动文件的大小，默认值是10MB -->
                 <maxFileSize>20MB</maxFileSize>

@@ -3,8 +3,7 @@ package com.leeyom.scaffold.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.leeyom.scaffold.common.dto.ResultDTO;
-import com.leeyom.scaffold.common.enums.ApiResponseEnum;
+import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.domain.entity.User;
 import com.leeyom.scaffold.mapper.UserMapper;
 import com.leeyom.scaffold.repository.UserRepository;
@@ -25,7 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserRepository userRepository;
 
     @Override
-    public ResultDTO<IPage<User>> selectAll(Page<User> page, User user) {
-        return new ResultDTO<>(ApiResponseEnum.SUCCESS, userRepository.selectAll(page, user));
+    public ApiResponse<IPage<User>> selectAll(Page<User> page, User user) {
+        return ApiResponse.ofSuccess(userRepository.selectAll(page, user));
     }
 }
