@@ -58,6 +58,6 @@ public class GlobalExceptionHandler {
         }
 
         log.error("【全局异常拦截】: 异常信息 {} ", e.getMessage());
-        return ApiResponse.ofStatus(Status.ERROR);
+        return ApiResponse.ofStatus(Status.ERROR, "系统繁忙，请稍后重试");
     }
 }
