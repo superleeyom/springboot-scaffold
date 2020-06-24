@@ -2,6 +2,12 @@
 <configuration>
     <property name="FILE_ERROR_PATTERN"
               value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} %file:%line: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!--日志文件主目录：这里${user.home}为当前服务器用户主目录-->
+    <property name="LOG_HOME" value="${user.home}/logs"/>
+    <!--日志文件名称：这里spring.application.name表示工程名称-->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -13,13 +19,10 @@
         </encoder>
     </appender>
 
-    <!-- springProperty标签，source指向了application.yml文件中的key，这里用服务名做日志的目录 -->
-    <springProperty scope="context" name="LOG_HOME" source="spring.application.name"/>
+    <!-- 收集所有级别的日志 -->
     <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--如果只是想要 Info 级别的日志，只是过滤 info 还是会输出 Error 日志，因为 Error 的级别高， 所以我们使用下面的策略，可以避免输出 Error 的日志-->
+        <!--如果只是想要 Info 级别的日志，只需要在下面filter的标签里面过滤error级别的日志就可以了-->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <!--过滤 Error-->
-            <level>ERROR</level>
             <!--匹配到就禁止-->
             <onMatch>DENY</onMatch>
             <!--没有匹配到就允许-->
@@ -29,7 +32,7 @@
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>${user.home}/logs/${LOG_HOME}/info.created_on_%d{yyyy-MM-dd}.part_%i.log
+            <FileNamePattern>${LOG_HOME}/${APP_NAME}/info.created_on_%d{yyyy-MM-dd}.part_%i.log
             </FileNamePattern>
             <!--只保留最近30天的日志-->
             <maxHistory>30</maxHistory>
@@ -46,6 +49,7 @@
         </encoder>
     </appender>
 
+    <!-- 收集纯error的日志 -->
     <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--如果只是想要 Error 级别的日志，那么需要过滤一下，默认是 info 级别的，ThresholdFilter-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -56,7 +60,7 @@
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>${user.home}/logs/${LOG_HOME}/error.created_on_%d{yyyy-MM-dd}.part_%i.log
+            <FileNamePattern>${LOG_HOME}/${APP_NAME}/error.created_on_%d{yyyy-MM-dd}.part_%i.log
             </FileNamePattern>
             <!--只保留最近30天的日志-->
             <maxHistory>30</maxHistory>
