@@ -83,6 +83,17 @@ public class ApiResponse<T> implements Serializable {
     }
 
     /**
+     * 构造一个成功且带数据的并自定义消息的API返回
+     *
+     * @param data    返回数据
+     * @param message 自定义消息
+     * @return ApiResponse
+     */
+    public static <T> ApiResponse<T> ofSuccess(T data, String message) {
+        return ofStatus(Status.SUCCESS, data, message);
+    }
+
+    /**
      * 构造一个失败且带自定义消息的API返回
      *
      * @param message 自定义消息
@@ -121,6 +132,18 @@ public class ApiResponse<T> implements Serializable {
      */
     public static <T> ApiResponse<T> ofStatus(IStatus status, T data) {
         return of(status.getCode(), status.getMessage(), data);
+    }
+
+    /**
+     * 构造一个有状态且带数据并自定义消息的API返回
+     *
+     * @param status  状态 {@link IStatus}
+     * @param data    返回数据
+     * @param message 自定义消息
+     * @return ApiResponse
+     */
+    public static <T> ApiResponse<T> ofStatus(IStatus status, T data, String message) {
+        return of(status.getCode(), message, data);
     }
 
     /**
