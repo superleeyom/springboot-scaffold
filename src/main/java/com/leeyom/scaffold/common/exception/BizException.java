@@ -24,6 +24,10 @@ public class BizException extends BaseException {
         super(code, message);
     }
 
+    public BizException(String message) {
+        super(message);
+    }
+
     public BizException(Status status, String message) {
         super(status, message);
     }
