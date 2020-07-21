@@ -27,6 +27,9 @@ target/
 /.nb-gradle/
 build/
 
+# MacOS files
+.DS_Store
+
 ### VS Code ###
 .vscode/
 
