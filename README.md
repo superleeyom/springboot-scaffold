@@ -13,7 +13,7 @@
 
 ## 如何使用
 
-准备 sql：
+创建一个名称为：`scaffold` 的数据库，执行 sql：
 
 ```sql
 DROP TABLE IF EXISTS user;
