@@ -2,11 +2,11 @@
 
 一个最最最最最基础的，且轻量的 springboot 脚手架，依赖越少越好，可以完成最最最基本的 crud，其他的组件集成可以在此基础上自由发挥，框架组成：
 
-- `spring boot 2.3`：
+- `spring boot 2.3.3`：
     - `spring-boot-starter-web`：web 组件
     - `spring-boot-starter-test`： 单元测试组件
-- `mybatis plus 3.3.2`：ORM框架，比通用 Mapper 好用
-- `hutool-all 5.3.5`：小而全的 Java 工具类库
+- `mybatis plus 3.4.0`：ORM框架，比通用 Mapper 好用
+- `hutool-all 5.4.0`：小而全的 Java 工具类库
 - `javamelody-spring-boot-starter`：监控器，打印 http 请求 url，响应时间
 - `lombok`：Java 实用工具，必备插件
 - `validator`：参数校验相关的注解
@@ -86,17 +86,28 @@ spring:
 @MapperScan(basePackages = {"com.leeyom.scaffold.mapper"})
 @EnableTransactionManagement
 public class MybatisPlusConfig {
+    
     /**
-     * 分页插件
+     * 内置插件：接入分页插件、乐观锁插件
+     *
+     * @return 插件拦截器
      */
     @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        // 分页插件
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        // 乐观锁插件
+        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+        return interceptor;
     }
-
 }
 ```
 
 将`com.leeyom.scaffold.mapper`替换成你自己的 mapper 目录。
 
-最后访问：[http://127.0.0.1:9380/scaffold/user/selectAll](http://127.0.0.1:9380/scaffold/user/selectAll) 测试下
+最后访问：[http://127.0.0.1:9380/scaffold/user/selectAll](http://127.0.0.1:9380/scaffold/user/selectAll) 测试下。
+
+## 注意
+
+用 IDEA 启动项目的时候，如果安装了`JRebel mybatisPlus extension`插件，请务必停用此插件，因为此插件不支持最新版本的 `mybatis-plus 3.4.0` 版本，会报`Invalid bound statement (not found)`异常。
