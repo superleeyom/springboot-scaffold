@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ApiResponse handlerException(Exception e, HttpServletRequest request) {
         if (e instanceof NoHandlerFoundException) {
-            log.error("【全局异常拦截】NoHandlerFoundException: 请求方法 {}, 请求路径：{}", ((NoHandlerFoundException) e).getRequestURL(), ((NoHandlerFoundException) e).getHttpMethod());
+            log.error("【全局异常拦截】NoHandlerFoundException: 请求方法：{}, 请求路径：{}", ((NoHandlerFoundException) e).getRequestURL(), ((NoHandlerFoundException) e).getHttpMethod());
             return ApiResponse.ofStatus(Status.REQUEST_NOT_FOUND);
         } else if (e instanceof HttpRequestMethodNotSupportedException) {
             log.error("【全局异常拦截】HttpRequestMethodNotSupportedException: 当前请求方式：{}, 支持请求方式：{}", ((HttpRequestMethodNotSupportedException) e).getMethod(), JSONUtil.toJsonStr(((HttpRequestMethodNotSupportedException) e).getSupportedHttpMethods()));
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
             return ApiResponse.of(Status.BAD_REQUEST.getCode(), CollUtil.getFirst(((ConstraintViolationException) e).getConstraintViolations())
                     .getMessage(), null);
         } else if (e instanceof MethodArgumentTypeMismatchException) {
-            log.error("【全局异常拦截】MethodArgumentTypeMismatchException: 参数名 {}, 异常信息：{}", ((MethodArgumentTypeMismatchException) e).getName(), ((MethodArgumentTypeMismatchException) e).getMessage());
+            log.error("【全局异常拦截】MethodArgumentTypeMismatchException: 参数名：{}, 异常信息：{}", ((MethodArgumentTypeMismatchException) e).getName(), ((MethodArgumentTypeMismatchException) e).getMessage());
             return ApiResponse.ofStatus(Status.PARAM_NOT_MATCH);
         } else if (e instanceof HttpMessageNotReadableException) {
             log.error("【全局异常拦截】HttpMessageNotReadableException: 错误信息：{}", ((HttpMessageNotReadableException) e).getMessage());
