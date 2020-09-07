@@ -110,4 +110,4 @@ public class MybatisPlusConfig {
 
 ## 注意
 
-用 IDEA 启动项目的时候，如果安装了`JRebel mybatisPlus extension`插件，请务必停用此插件，因为此插件不支持最新版本的 `mybatis-plus 3.4.0` 版本，会报`Invalid bound statement (not found)`异常。
+~~用 IDEA 启动项目的时候，如果安装了`JRebel mybatisPlus extension`插件，请务必停用此插件，因为此插件不支持最新版本的 `mybatis-plus 3.4.0` 版本，会报`Invalid bound statement (not found)`异常。~~**插件版本号升级到0.0.3+**。
