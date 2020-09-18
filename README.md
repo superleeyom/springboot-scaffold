@@ -2,11 +2,11 @@
 
 一个最最最最最基础的，且轻量的 springboot 脚手架，依赖越少越好，可以完成最最最基本的 crud，其他的组件集成可以在此基础上自由发挥，框架组成：
 
-- `spring boot 2.3.3`：
+- `spring boot`：
     - `spring-boot-starter-web`：web 组件
     - `spring-boot-starter-test`： 单元测试组件
-- `mybatis plus 3.4.0`：ORM框架，比通用 Mapper 好用
-- `hutool-all 5.4.0`：小而全的 Java 工具类库
+- `mybatis plus`：ORM框架，比通用 Mapper 好用
+- `hutool-all`：小而全的 Java 工具类库
 - `javamelody-spring-boot-starter`：监控器，打印 http 请求 url，响应时间
 - `lombok`：Java 实用工具，必备插件
 - `validator`：参数校验相关的注解
