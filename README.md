@@ -66,7 +66,7 @@ mybatis-plus:
 - `${customApplicationName}`：自定义服务名称，改成你自己的服务名
 - `${customEntityPackage}`：如果你习惯目前的实体包结构，可以改成你自己喜欢的目录结构，这里需要改动一下
 
-`application-*.yml`：
+`application-*.yml`配置文件中，修改数据库配置：
 
 ```
 # 数据库
@@ -77,9 +77,8 @@ spring:
     username: root
     password: root
 ```
-修改数据库配置。
 
-`MybatisPlusConfig.java`：
+`MybatisPlusConfig.java`配置中，修改 mapper 的包扫描路径，将`com.leeyom.scaffold.mapper`替换成你自己的 mapper 目录：
 
 ```java
 @Configuration
@@ -103,8 +102,6 @@ public class MybatisPlusConfig {
     }
 }
 ```
-
-将`com.leeyom.scaffold.mapper`替换成你自己的 mapper 目录。
 
 最后访问：[http://127.0.0.1:9380/scaffold/user/selectAll](http://127.0.0.1:9380/scaffold/user/selectAll) 测试下。
 
