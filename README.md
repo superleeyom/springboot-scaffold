@@ -77,7 +77,7 @@ spring:
     username: root
     password: root
 ```
-这里都知道，改成你自己的数据库。
+修改数据库配置。
 
 `MybatisPlusConfig.java`：
 
@@ -110,4 +110,8 @@ public class MybatisPlusConfig {
 
 ## 注意
 
-~~用 IDEA 启动项目的时候，如果安装了`JRebel mybatisPlus extension`插件，请务必停用此插件，因为此插件不支持最新版本的 `mybatis-plus 3.4.0` 版本，会报`Invalid bound statement (not found)`异常。~~**插件版本号升级到0.0.3+**。
+用 IDEA 启动项目的时候，如果安装了`JRebel mybatisPlus extension`插件，请务必停用此插件，因为此插件不支持最新版本的 `mybatis-plus 3.4.0` 版本，会报`Invalid bound statement (not found)`异常，**插件版本号升级到 0.0.3 后便可以解决此问题**。
+
+## 推荐
+
+IDEA 结合插件 [api-generator](https://github.com/Forgus/api-generator) 可以一键生成接口文档，无代码入侵，虽然 Swagger 也可以，但是需要额外引入相关依赖，同时代码侵入性太强了（需要增加注解）。
