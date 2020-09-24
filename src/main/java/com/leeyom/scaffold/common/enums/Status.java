@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.stream.Stream;
 
 /**
- * 通用状态码
+ * 通用状态枚举
  *
  * @author leeyom
  */

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.domain.entity.User;
 import com.leeyom.scaffold.service.UserService;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,16 @@ public class UserController extends ApiController {
     @GetMapping("selectAll")
     public ApiResponse<IPage<User>> selectAll(Page<User> page, User user) {
         return userService.selectAll(page, user);
+    }
+
+    /**
+     * 获取用户信息
+     *
+     * @param userId 用户id
+     * @return 用户信息
+     */
+    @GetMapping("/user/info")
+    public ApiResponse<User> getUserInfo(@NonNull Integer userId) {
+        return ApiResponse.ofSuccess(userService.getUserInfo(userId));
     }
 }

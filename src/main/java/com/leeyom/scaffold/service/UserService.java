@@ -22,4 +22,12 @@ public interface UserService extends IService<User> {
      * @return 所有数据
      */
     ApiResponse<IPage<User>> selectAll(Page<User> page, User user);
+
+    /**
+     * 获取用户信息
+     *
+     * @param userId 用户id
+     * @return 用户信息
+     */
+    User getUserInfo(Integer userId);
 }

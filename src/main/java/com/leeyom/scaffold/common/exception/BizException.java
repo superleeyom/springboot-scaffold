@@ -1,6 +1,6 @@
 package com.leeyom.scaffold.common.exception;
 
-import com.leeyom.scaffold.common.enums.Status;
+import com.leeyom.scaffold.common.enums.IStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,11 +12,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BizException extends BaseException {
-    public BizException(Status status) {
+
+    public BizException(IStatus status) {
         super(status);
     }
 
-    public BizException(Status status, Object data) {
+    public BizException(IStatus status, Object data) {
         super(status, data);
     }
 
@@ -28,7 +29,7 @@ public class BizException extends BaseException {
         super(message);
     }
 
-    public BizException(Status status, String message) {
+    public BizException(IStatus status, String message) {
         super(status, message);
     }
 
