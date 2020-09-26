@@ -2,7 +2,6 @@ package com.leeyom.scaffold.api;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.domain.entity.User;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("user")
-public class UserController extends ApiController {
+public class UserController {
 
     @Autowired
     private UserService userService;
