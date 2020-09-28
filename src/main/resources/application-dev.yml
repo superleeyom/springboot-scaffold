@@ -11,7 +11,4 @@ spring:
 # 日志级别
 logging:
   level:
-    com:
-      leeyom:
-        scaffold:
-          mapper: debug
+    com.leeyom.scaffold.mapper: debug
