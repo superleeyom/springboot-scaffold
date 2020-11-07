@@ -33,6 +33,8 @@ INSERT INTO user (id, name, age, email) VALUES
 (5, 'Billie', 24, 'test5@baomidou.com');
 ```
 
+### 修改 application.yml
+
 套用此脚手架，需要修改几个地方，有些地方我用占位符 `${xxx}` 代替：
 
 `application.yml`：
@@ -77,6 +79,16 @@ spring:
     username: root
     password: root
 ```
+
+修改dev环境的日志级别目录：
+```
+# 日志级别
+logging:
+  level:
+    com.leeyom.scaffold.mapper: debug
+```
+
+### 修改`MybatisPlusConfig.java`
 
 `MybatisPlusConfig.java`配置中，修改 mapper 的包扫描路径，将`com.leeyom.scaffold.mapper`替换成你自己的 mapper 目录：
 
