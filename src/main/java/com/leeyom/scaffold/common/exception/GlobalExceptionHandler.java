@@ -7,6 +7,7 @@ import com.leeyom.scaffold.common.dto.ApiResponse;
 import com.leeyom.scaffold.common.enums.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -40,6 +41,12 @@ public class GlobalExceptionHandler {
         } else if (e instanceof MethodArgumentNotValidException) {
             log.error("【全局异常拦截】MethodArgumentNotValidException", e);
             return ApiResponse.of(Status.BAD_REQUEST.getCode(), ((MethodArgumentNotValidException) e).getBindingResult()
+                    .getAllErrors()
+                    .get(0)
+                    .getDefaultMessage(), null);
+        } else if (e instanceof BindException) {
+            log.error("【全局异常拦截】BindException", e);
+            return ApiResponse.of(Status.BAD_REQUEST.getCode(), ((BindException) e).getBindingResult()
                     .getAllErrors()
                     .get(0)
                     .getDefaultMessage(), null);
