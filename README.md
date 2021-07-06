@@ -16,21 +16,20 @@
 创建一个名称为：`scaffold` 的数据库，执行 sql：
 
 ```sql
-DROP TABLE IF EXISTS user;
-CREATE TABLE user
-(
-	id BIGINT(20) NOT NULL COMMENT '主键ID',
-	name VARCHAR(30) NULL DEFAULT NULL COMMENT '姓名',
-	age INT(11) NULL DEFAULT NULL COMMENT '年龄',
-	email VARCHAR(50) NULL DEFAULT NULL COMMENT '邮箱',
-	PRIMARY KEY (id)
-);
-INSERT INTO user (id, name, age, email) VALUES
-(1, 'Jone', 18, 'test1@baomidou.com'),
-(2, 'Jack', 20, 'test2@baomidou.com'),
-(3, 'Tom', 28, 'test3@baomidou.com'),
-(4, 'Sandy', 21, 'test4@baomidou.com'),
-(5, 'Billie', 24, 'test5@baomidou.com');
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+                      `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+                      `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
+                      `age` int unsigned NOT NULL COMMENT '年龄',
+                      `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '邮箱',
+                      PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO user (name, age, email) VALUES
+('Jone', 18, 'test1@baomidou.com'),
+('Jack', 20, 'test2@baomidou.com'),
+('Tom', 28, 'test3@baomidou.com'),
+('Sandy', 21, 'test4@baomidou.com'),
+('Billie', 24, 'test5@baomidou.com');
 ```
 
 ### 修改 application.yml
